@@ -1,6 +1,6 @@
 {
   "name": "bs4-svelte-form-validation",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A bootstrap4 form validation components for svelte.",
   "keywords": [
     "svelte",
@@ -8,6 +8,11 @@
     "validation",
     "form"
   ],
+  "repository": {
+    "type": "git",
+    "url": "github.com/guilhermeg2k/bs4-svelte-form-validation"
+  },
+
   "author": "guilhermeg2k",
   "license": "MIT"
 }
