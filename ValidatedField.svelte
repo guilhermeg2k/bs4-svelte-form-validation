@@ -1,23 +1,25 @@
 <script>
-  import validate from "./validator.js";
+  import Validator from "./validator.js";
   export let id = null;
   export let placeholder = null;
   export let Class = null;
-  export let Validators = null;
+  export let validators = null;
   export let Type = null;
-  export let value = null;
+  export let value = "";
   export let min = null;
   export let max = null;
   export let rows = null;
   export let cols = null;
-  export let name = null;
+  export const name = null;
   export let maxlength = null;
   export let showValidFeedback = true;
   export let showInvalidFeedback = true;
   let msg = "";
   let validated = null;
+  let validation = null;
+  let validator = new Validator();
   $: if (value !== undefined) {
-    let validation = validate(Validators, value, id);
+    validation = validator.validate(validators, value, id);
     validation.error ? (validated = false) : (validated = true);
     msg = validation.msg;
   }
