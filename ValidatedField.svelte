@@ -30,6 +30,7 @@
     {Type}
     {Class}
     {placeholder}
+    {maxlength}
     bind:value
     class:is-invalid={validated === false}
     class:is-valid={validated} />
@@ -39,6 +40,41 @@
 {/if}
 
 {#if Type === 'number'}
+  <input
+    {min}
+    {max}
+    {Type}
+    {Class}
+    {placeholder}
+    bind:value
+    class:is-invalid={validated === false}
+    class:is-valid={validated} />
+  {#if validated === false && showInvalidFeedback}
+    <div class="invalid-feedback">{msg}</div>
+  {/if}
+  {#if validated === true && showValidFeedback}
+    <div class="valid-feedback">{msg}</div>
+  {/if}
+{/if}
+
+{#if Type === 'password'}
+  <input
+    {Type}
+    {Class}
+    {placeholder}
+    {maxlength}
+    bind:value
+    class:is-invalid={validated === false}
+    class:is-valid={validated} />
+  {#if validated === false && showInvalidFeedback}
+    <div class="invalid-feedback">{msg}</div>
+  {/if}
+  {#if validated === true && showValidFeedback}
+    <div class="valid-feedback">{msg}</div>
+  {/if}
+{/if}
+
+{#if Type === 'range'}
   <input
     {min}
     {max}
@@ -78,6 +114,19 @@
     class:is-valid={validated}>
     <slot />
   </select>
+  {#if validated === false}
+    <div class="invalid-feedback">{msg}</div>
+  {/if}
+{/if}
+
+{#if Type === 'date'}
+  <input
+    {Type}
+    {Class}
+    {placeholder}
+    bind:value
+    class:is-invalid={validated === false}
+    class:is-valid={validated} />
   {#if validated === false}
     <div class="invalid-feedback">{msg}</div>
   {/if}
