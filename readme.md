@@ -5,7 +5,7 @@ But you can test it out!
 
 ## Installation
 
-`npm i bs4-svelte-form-validatio`
+`npm i bs4-svelte-form-validation`
 
 ## Example of Usage
 
