@@ -20,6 +20,14 @@ export default Messages = {
     invalid: "Your email is invalid",
     valid: "Email validated."
   },
+  password: {
+    numberOfChars: "Your password must have at least {value} characters",
+    specialKeys:
+      "Your password must have at least {value} special character(s)",
+    capitalLetter:
+      "Your password must have at least {value} uppercase letter(s)",
+    valid: "field validated."
+  },
   default: {
     invalid: "Field invalid",
     valid: "Field validated."

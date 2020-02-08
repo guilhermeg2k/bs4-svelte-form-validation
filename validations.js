@@ -25,10 +25,12 @@ export function numberRequired(value) {
 }
 export function min(min, value) {
   if (value.length < min) {
-    return {
+    let validation = {
       error: true,
       msg: this.messages.min.invalid
     };
+    validation.msg = validation.msg.replace("{value}", min);
+    return validation;
   } else {
     return {
       error: false,
@@ -54,10 +56,12 @@ export function email(value) {
 
 export function max(max, value) {
   if (value.length > max) {
-    return {
+    let validation = {
       error: true,
       msg: this.messages.max.invalid
     };
+    validation.msg = validation.msg.replace("{value}", max);
+    return validation;
   } else {
     return {
       error: false,

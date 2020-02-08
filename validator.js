@@ -7,6 +7,7 @@ import {
   max,
   custom
 } from "./validations";
+
 export default class Validator {
   constructor(msgs) {
     this.validations = [];
@@ -19,6 +20,9 @@ export default class Validator {
     this.email = email;
     this.max = max;
     this.custom = custom;
+    if (msgs != undefined) {
+      this.messages = { ...this.messages, ...msgs };
+    }
   }
 }
 function validate(validators, value, id) {
@@ -30,11 +34,11 @@ function validate(validators, value, id) {
     if (validator.includes("min")) {
       let minValue = getValue(validator);
       validation = this.min(minValue, value);
-    } else if (validator === "number-required") {
-      validation = this.numberRequired(value);
     } else if (validator.includes("max")) {
       let maxValue = getValue(validator);
       validation = this.max(maxValue, value);
+    } else if (validator === "number-required") {
+      validation = this.numberRequired(value);
     } else if (validator.includes("custom")) {
       let custom = getCustom(validator);
       validation = this.custom(custom, value);
