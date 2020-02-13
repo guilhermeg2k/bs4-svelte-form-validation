@@ -22,11 +22,14 @@ export default Messages = {
   },
   password: {
     numberOfChars: "Your password must have at least {value} characters",
-    specialKeys:
-      "Your password must have at least {value} special character(s)",
-    capitalLetter:
-      "Your password must have at least {value} uppercase letter(s)",
-    valid: "field validated."
+    specialKeys: "Your password must have at least one special character",
+    capitalLetter: "Your password must have at least one uppercase letter",
+    invalid: "Your password contain invalid characters.",
+    valid: "Field validated."
+  },
+  alphanumeric: {
+    invalid: "This field must contain just letters and numbers.",
+    valid: "Field validated"
   },
   default: {
     invalid: "Field invalid",

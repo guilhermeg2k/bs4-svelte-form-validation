@@ -5,6 +5,10 @@ import {
   min,
   email,
   max,
+  alphanumeric,
+  weakPassword,
+  averagePassword,
+  strongPassword,
   custom
 } from "./validations";
 
@@ -19,6 +23,11 @@ export default class Validator {
     this.numberRequired = numberRequired;
     this.email = email;
     this.max = max;
+    this.weakPassword = weakPassword;
+    this.alphanumeric = alphanumeric;
+    this.strongPassword = strongPassword;
+    this.weakPassword = weakPassword;
+    this.averagePassword = averagePassword;
     this.custom = custom;
     if (msgs != undefined) {
       this.messages = { ...this.messages, ...msgs };
@@ -46,6 +55,14 @@ function validate(validators, value, id) {
       validation = this.required(value);
     } else if (validator === "email") {
       validation = this.email(value);
+    } else if (validator === "alphanumeric") {
+      validation = this.alphanumeric(value);
+    } else if (validator === "weak-password") {
+      validation = this.weakPassword(value);
+    } else if (validator === "average-password") {
+      validation = this.averagePassword(value);
+    } else if (validator === "strong-password") {
+      validation = this.strongPassword(value);
     }
     if (validation.error === true) {
       this.validations.id = false;

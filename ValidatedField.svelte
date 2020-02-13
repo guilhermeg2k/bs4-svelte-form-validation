@@ -26,8 +26,8 @@
   export let size = null;
   export let step = null;
   export let wrap = null;
-  export let showValidFeedback = true;
-  export let showInvalidFeedback = true;
+  export let showValidFeedback = "true";
+  export let showInvalidFeedback = "true";
   export let messages = null;
   let msg = "";
   let validated = null;
@@ -387,9 +387,9 @@
     class:is-valid={validated} />
 {/if}
 
-{#if validated === false && showInvalidFeedback}
+{#if !validated && showInvalidFeedback === 'true'}
   <div class="invalid-feedback">{msg}</div>
 {/if}
-{#if validated === true && showValidFeedback}
+{#if validated && showValidFeedback === 'true'}
   <div class="valid-feedback">{msg}</div>
 {/if}
