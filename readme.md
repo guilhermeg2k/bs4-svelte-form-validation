@@ -39,7 +39,7 @@ import ValidatedField from "bs4-svelte-form-validation/ValidatedField.svelte";
 
 ## Custom Feedback messages
 
-You can pass custom messages through the component. <br>
+You can pass custom messages through the component.
 
 ```javascript
 <script>
@@ -57,7 +57,7 @@ You can pass custom messages through the component. <br>
 
 ## Not showing feedback messages
 
-You can chose if the valid or invalid feedback is showed
+You can choose if the valid or invalid feedback it's showed.
 
 ```html
 <ValidatedField Class="form-control" Type="text" id="login" value="teste"
