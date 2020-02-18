@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import Validator from "./validator.js";
   export let value = "";
   export let id = null;
@@ -22,7 +23,7 @@
   export let multiple = null;
   export let pattern = null;
   export let required = null;
-  export let readonly = null;
+  export let readonly = false;
   export let size = null;
   export let step = null;
   export let wrap = null;
@@ -33,6 +34,7 @@
   let validated = null;
   let validation = null;
   let validator = new Validator();
+  const dispatch = createEventDispatcher();
   if (messages) {
     validator = new Validator(messages);
   }
@@ -40,6 +42,11 @@
     validation = validator.validate(validators, value, id);
     validation.error ? (validated = false) : (validated = true);
     msg = validation.msg;
+    if (validated === true) {
+      dispatch("validate", {
+        text: msg
+      });
+    }
   }
 </script>
 

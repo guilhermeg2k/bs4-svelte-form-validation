@@ -87,7 +87,6 @@ export function alphanumeric(value) {
 export function weakPassword(value, min = 6) {
   let re = new RegExp("^[A-Za-z0-9!\"#$%&'()*+,./:;<=>?@^_`{|}~-]*$");
   let validation = this.min(min, value);
-  console.log(validation);
   if (validation.error === true) {
     validation.msg = this.messages.password.numberOfChars;
     validation.msg = validation.msg.replace("{value}", min);

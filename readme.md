@@ -65,27 +65,49 @@ readonly validators={['required']} bind:value={teste} placeholder="teste"
 showValidFeedback="false" showInvalidFeedback="false" />
 ```
 
+## OnValidate event
+
+You can use an event to know when the field is validated
+
+```html
+on:validate
+```
+
+### Example
+
+```html
+<script>
+  function validate(e) {
+    alert(e.detail.text);
+  }
+</script>
+<ValidatedField Class="form-control" Type="text" id="login"
+validators={['required', 'strong-password']} bind:value={teste}
+placeholder="Your password" showValidFeedback="false" on:validate={validate} />
+```
+
 ## Validators
 
-|    Validator     |                                             Description                                             |              How to               |
-| :--------------: | :-------------------------------------------------------------------------------------------------: | :-------------------------------: |
-|       min        |     Field minimum number of character or if it's a number or range the field the minimum value      |          min:{min-value}          |
-|       max        |     Field maximum number of character or if it's a number or range the field the maximum value      |          max:{max-value}          |
-|     required     |                                        The field is required                                        |             required              |
-|   alphanumeric   |                       The field needs to contain only alphanumeric characters                       |           alphanumeric            |
-|  weak password   |                       The field needs to contain at least 6 valid characters                        |           weak-password           |
-| average password |            The field needs to contain at least 7 valid characters and one special simbol            |         average-password          |
-| strong password  | The field needs to contain at least 8 valid characters, one special simbol and one uppercase letter |          strong-password          |
-|      email       |                             The field needs to be a valid email format                              |               email               |
-|      custom      |                                You specify a custom regex validator                                 | {regex}:{valid-msg}:{invalid-msg} |
+|    Validator     |                                             Description                                             |                  How to                  |
+| :--------------: | :-------------------------------------------------------------------------------------------------: | :--------------------------------------: |
+|       min        |     Field minimum number of character or if it's a number or range the field the minimum value      |             min:{min-value}              |
+|       max        |     Field maximum number of character or if it's a number or range the field the maximum value      |             max:{max-value}              |
+|     required     |                                        The field is required                                        |                 required                 |
+|   alphanumeric   |                       The field needs to contain only alphanumeric characters                       |               alphanumeric               |
+|  weak password   |                       The field needs to contain at least 6 valid characters                        |              weak-password               |
+| average password |            The field needs to contain at least 7 valid characters and one special simbol            |             average-password             |
+| strong password  | The field needs to contain at least 8 valid characters, one special simbol and one uppercase letter |             strong-password              |
+|      email       |                             The field needs to be a valid email format                              |                  email                   |
+|      custom      |                                You specify a custom regex validator                                 | custom:{regex}:{valid-msg}:{invalid-msg} |
 
 ## Todo list
 
 [ X ] Add all input types <br>
 [ X ] Add all html input attributes <br>
 [ X ] Add new types of validations <br>
-[&nbsp;&nbsp;&nbsp;] Add a event when the field is validated<br>
-[&nbsp;&nbsp;&nbsp;] Check for errors
+[ X ] Add a event when the field is validated <br>
+[&nbsp;&nbsp;&nbsp;] Check for errors <br>
+[&nbsp;&nbsp;&nbsp;] Improve the code
 
 ## License
 
