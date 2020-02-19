@@ -7,20 +7,27 @@ But you can test it out!
 
 ## Installation
 
-`npm i bs4-svelte-form-validaion`
+`npm i bs4-svelte-form-validation`
 
 I recommend you to install with the latest tag since the project is in very early stage and get updated a lot.
 
-`npm i bs4-svelte-form-validaion@latest`
+`npm i bs4-svelte-form-validation@latest`
 
 ## Importing
 
+Import as you need:
+
 ```javascript
 import ValidatedField from "bs4-svelte-form-validation/ValidatedField.svelte";
+
+import FieldGroup from "bs4-svelte-form-validation/FieldGroup.svelte";
+
 import Validator from "bs4-svelte-form-validation/validator";
 ```
 
 ## Basic Syntax
+
+> Always pass an id when using any component.
 
 ```html
 <script>
@@ -38,15 +45,51 @@ import Validator from "bs4-svelte-form-validation/validator";
 
 > Note that Type and Class are written with their fist letter on uppercase.
 
-> You need to pass an id to use the isValidated()
-> function.
-
 ## Example
 
 ```html
 <ValidatedField Type="text" id="username"
 validator = {validator}
 validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-control"></ValidatedField>
+```
+
+## FieldGroup example
+
+```html
+<script>
+  import ValidatedField from "./bs4/ValidatedField.svelte";
+  import FieldGroup from "./bs4/FieldGroup.svelte";
+  import Validator from "./bs4/validator.js";
+  let user;
+  let password;
+  let validator = new Validator();
+  let buttonValid = false;
+</script>
+  <FieldGroup
+    id="group"
+    {validator}
+    on:groupValidated={() => (buttonValid = true)}
+    on:groupInvalidated={() => (buttonValid = false)}>
+    <ValidatedField
+      Class="form-control"
+      Type="text"
+      id="login"
+      validators={['required', 'max:5']}
+      bind:value={user}
+      placeholder="Your username"
+      showValidFeedback="false"
+      {validator} />
+    <ValidatedField
+      Class="form-control"
+      Type="password"
+      id="password"
+      validators={['required', 'strong-password']}
+      bind:value={teste2}
+      placeholder="Your password"
+      showValidFeedback="false"
+      {validator} />
+    <button disabled={!buttonValid}>LogIn</button>
+  </FieldGroup>
 ```
 
 ## Custom Feedback messages
@@ -64,7 +107,7 @@ validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-contr
 <ValidatedField Type="text" id="username" validator = {validator} validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-control" messages={msgs}></ValidatedField>
 ```
 
-> Take a look at defaultMessages.json
+> Take a look at defaultMessages.js
 
 ## Not showing feedback messages
 
@@ -78,7 +121,13 @@ showValidFeedback="false" showInvalidFeedback="false" />
 
 ## Events
 
-Currently you can listen to three events
+#### DataField events
+
+```html
+on:changeValidated on:validated on:invalidated
+```
+
+#### FieldGroup events
 
 ```html
 on:changeValidated on:validated on:invalidated
@@ -125,6 +174,7 @@ on:invalidated={invalidate} />
 [ X ] Add all html input attributes <br>
 [ X ] Add new types of validations <br>
 [ X ] Add a event when the field is validated <br>
+[ X ] Add support to group validation check <br>
 [&nbsp;&nbsp;&nbsp;] Add support to all html events <br>
 [&nbsp;&nbsp;&nbsp;] Check for errors <br>
 [&nbsp;&nbsp;&nbsp;] Improve the code <br>

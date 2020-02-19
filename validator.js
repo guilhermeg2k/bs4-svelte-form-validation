@@ -82,7 +82,6 @@ export function isValidated(ids) {
   }
   for (let id of ids) {
     if (this.validations[id] === false) {
-      console.log("the id its " + id);
       return false;
     }
   }

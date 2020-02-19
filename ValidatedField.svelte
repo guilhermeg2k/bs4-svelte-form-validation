@@ -26,7 +26,7 @@
   export let size = null;
   export let step = null;
   export let wrap = null;
-  export let showValidFeedback = "true";
+  export let showValidFeedback = "false";
   export let showInvalidFeedback = "true";
   export let validator = null;
   let msg = "";
@@ -434,6 +434,19 @@
     class:is-valid={validated} />
 {/if}
 
+{#if Type === 'button'}
+  <button
+    {Class}
+    {placeholder}
+    {name}
+    {id}
+    {size}
+    {required}
+    {disabled}
+    on:click>
+    <slot />
+  </button>
+{/if}
 {#if !validated && showInvalidFeedback === 'true'}
   <div class="invalid-feedback">{msg}</div>
 {/if}
