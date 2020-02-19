@@ -16,7 +16,6 @@ export default class Validator {
   constructor(msgs) {
     this.validations = [];
     this.validate = validate;
-    this.isValidated = isValidated;
     this.messages = messages;
     this.required = required;
     this.min = min;
@@ -29,6 +28,7 @@ export default class Validator {
     this.weakPassword = weakPassword;
     this.averagePassword = averagePassword;
     this.custom = custom;
+    this.isValidated = isValidated;
     if (msgs != undefined) {
       this.messages = { ...this.messages, ...msgs };
     }
@@ -65,19 +65,24 @@ function validate(validators, value, id) {
       validation = this.strongPassword(value);
     }
     if (validation.error === true) {
-      this.validations.id = false;
+      this.validations[id] = false;
       return validation;
     }
   }
+  this.validations[id] = true;
   return validation;
 }
 
-function isValidated(ids) {
-  if (typeof ids === number) {
-    return this.validations.ids;
+export function isValidated(ids) {
+  if (typeof ids === String) {
+    if (this.validations[ids] === undefined) {
+      return false;
+    }
+    return this.validations[ids];
   }
   for (let id of ids) {
-    if (this.validations.id === false) {
+    if (this.validations[id] === false) {
+      console.log("the id its " + id);
       return false;
     }
   }

@@ -1,6 +1,5 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import Validator from "./validator.js";
   export let value = "";
   export let id = null;
   export let placeholder = null;
@@ -29,23 +28,30 @@
   export let wrap = null;
   export let showValidFeedback = "true";
   export let showInvalidFeedback = "true";
-  export let messages = null;
+  export let validator = null;
   let msg = "";
   let validated = null;
+  let lastValidated = null;
   let validation = null;
-  let validator = new Validator();
   const dispatch = createEventDispatcher();
-  if (messages) {
-    validator = new Validator(messages);
-  }
   $: if (value !== undefined) {
     validation = validator.validate(validators, value, id);
     validation.error ? (validated = false) : (validated = true);
     msg = validation.msg;
-    if (validated === true) {
-      dispatch("validate", {
+    if (validated != lastValidated) {
+      dispatch("changeValidated", {
         text: msg
       });
+      if (validated === true) {
+        dispatch("validated", {
+          text: msg
+        });
+      }
+      if (validated === false) {
+        dispatch("invalidated", {
+          text: msg
+        });
+      }
     }
   }
 </script>
@@ -67,6 +73,8 @@
     {autocomplete}
     {list}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -91,6 +99,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -112,6 +122,8 @@
     {autocomplete}
     {maxlength}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -135,6 +147,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -152,6 +166,8 @@
     {maxlength}
     {wrap}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -160,6 +176,8 @@
   <select
     class={Class}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated}>
     <slot />
@@ -183,6 +201,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -204,6 +224,8 @@
     {autocomplete}
     {checked}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -224,6 +246,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -245,6 +269,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -267,6 +293,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -288,6 +316,8 @@
     {autocomplete}
     {checked}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -308,6 +338,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -329,6 +361,8 @@
     {list}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -350,6 +384,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -370,6 +406,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}
@@ -390,6 +428,8 @@
     {dirname}
     {autocomplete}
     bind:value
+    on:change
+    on:click
     class:is-invalid={validated === false}
     class:is-valid={validated} />
 {/if}

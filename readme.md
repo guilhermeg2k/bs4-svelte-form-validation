@@ -7,20 +7,29 @@ But you can test it out!
 
 ## Installation
 
-`npm i bs4-svelte-form-validation`
+`npm i bs4-svelte-form-validaion`
+
+I recommend you to install with the latest tag since the project is in very early stage and get updated a lot.
+
+`npm i bs4-svelte-form-validaion@latest`
 
 ## Importing
 
 ```javascript
 import ValidatedField from "bs4-svelte-form-validation/ValidatedField.svelte";
+import Validator from "bs4-svelte-form-validation/validator";
 ```
 
 ## Basic Syntax
 
 ```html
+<script>
+  let validator = new Validator();
+</script>
 <ValidatedField
   Type="{type}"
   id="{id}"
+  validator="{validator}"
   validators="{[{validators}]}"
   bind:value="{value}"
   Class="{Classes}"
@@ -29,17 +38,18 @@ import ValidatedField from "bs4-svelte-form-validation/ValidatedField.svelte";
 
 > Note that Type and Class are written with their fist letter on uppercase.
 
-> All HTML attributes are suppose to be working.
+> You need to pass an id to use the isValidated()
+> function.
 
 ## Example
 
 ```html
-<ValidatedField Type="text" id="username" validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-control"></ValidatedField>
+<ValidatedField Type="text" id="username"
+validator = {validator}
+validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-control"></ValidatedField>
 ```
 
 ## Custom Feedback messages
-
-You can pass custom messages through the component.
 
 ```javascript
 <script>
@@ -49,8 +59,9 @@ You can pass custom messages through the component.
       valid: "Campo validado."
     }
   };
+  let validator = new Validator(msgs);
 </script>
-<ValidatedField Type="text" id="username" validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-control" messages={msgs}></ValidatedField>
+<ValidatedField Type="text" id="username" validator = {validator} validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-control" messages={msgs}></ValidatedField>
 ```
 
 > Take a look at defaultMessages.json
@@ -65,12 +76,12 @@ readonly validators={['required']} bind:value={teste} placeholder="teste"
 showValidFeedback="false" showInvalidFeedback="false" />
 ```
 
-## OnValidate event
+## Events
 
-You can use an event to know when the field is validated
+Currently you can listen to three events
 
 ```html
-on:validate
+on:changeValidated on:validated on:invalidated
 ```
 
 ### Example
@@ -80,10 +91,18 @@ on:validate
   function validate(e) {
     alert(e.detail.text);
   }
+  function invalidate(e) {
+    alert(e.detail.text);
+  }
+  function validated(e) {
+    alert(e.detail.text);
+  }
 </script>
 <ValidatedField Class="form-control" Type="text" id="login"
 validators={['required', 'strong-password']} bind:value={teste}
-placeholder="Your password" showValidFeedback="false" on:validate={validate} />
+placeholder="Your password" showValidFeedback="false"
+on:changeValidated={validate} on:validated={validated}
+on:invalidated={invalidate} />
 ```
 
 ## Validators
@@ -106,8 +125,10 @@ placeholder="Your password" showValidFeedback="false" on:validate={validate} />
 [ X ] Add all html input attributes <br>
 [ X ] Add new types of validations <br>
 [ X ] Add a event when the field is validated <br>
+[&nbsp;&nbsp;&nbsp;] Add support to all html events <br>
 [&nbsp;&nbsp;&nbsp;] Check for errors <br>
-[&nbsp;&nbsp;&nbsp;] Improve the code
+[&nbsp;&nbsp;&nbsp;] Improve the code <br>
+[&nbsp;&nbsp;&nbsp;] Add new features
 
 ## License
 
