@@ -174,6 +174,12 @@
 
 {#if Type === 'select'}
   <select
+    {Type}
+    {Class}
+    {placeholder}
+    {name}
+    {id}
+    {required}
     class={Class}
     bind:value
     on:change
@@ -453,3 +459,4 @@
 {#if validated && showValidFeedback === 'true'}
   <div class="valid-feedback">{msg}</div>
 {/if}
+

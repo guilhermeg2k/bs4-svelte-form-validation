@@ -30,9 +30,13 @@
     }, 1);
   }
   onMount(() => {
-    elements = document.getElementById(id).childNodes;
+    elements = document.getElementById(id).querySelectorAll("input");
+    elements = [
+      ...elements,
+      document.getElementById(id).querySelectorAll("select")[0]
+    ];
     Array.from(elements).forEach(element => {
-      if (element.tagName === "INPUT") {
+      if (element.tagName === "INPUT" || element.tagName === "SELECT") {
         elementsIds.push(element.id);
         element.addEventListener("input", validateGroup);
       }
@@ -43,3 +47,4 @@
 <div {id} {Class} {name}>
   <slot />
 </div>
+

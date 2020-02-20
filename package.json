@@ -1,6 +1,6 @@
 {
   "name": "bs4-svelte-form-validation",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "A bootstrap4 form validation component for svelte.",
   "keywords": [
     "svelte",
