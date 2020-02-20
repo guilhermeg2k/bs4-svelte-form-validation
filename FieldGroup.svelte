@@ -31,10 +31,14 @@
   }
   onMount(() => {
     elements = document.getElementById(id).querySelectorAll("input");
-    elements = [
-      ...elements,
-      document.getElementById(id).querySelectorAll("select")[0]
-    ];
+    let selects = document.getElementById(id).querySelectorAll("select")[0];
+    if (selects != undefined) {
+      elements = [
+        ...elements,
+        document.getElementById(id).querySelectorAll("select")[0]
+      ];
+    }
+    console.log(elements);
     Array.from(elements).forEach(element => {
       if (element.tagName === "INPUT" || element.tagName === "SELECT") {
         elementsIds.push(element.id);
