@@ -68,8 +68,8 @@ validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-contr
   <FieldGroup
     id="group"
     {validator}
-    on:groupValidated={() => (buttonValid = true)}
-    on:groupInvalidated={() => (buttonValid = false)}>
+    on:valid={() => (buttonValid = true)}
+    on:invalid={() => (buttonValid = false)}>
     <ValidatedField
       Class="form-control"
       Type="text"
@@ -77,16 +77,14 @@ validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-contr
       validators={['required', 'max:5']}
       bind:value={user}
       placeholder="Your username"
-      showValidFeedback="false"
       {validator} />
     <ValidatedField
       Class="form-control"
       Type="password"
       id="password"
       validators={['required', 'strong-password']}
-      bind:value={teste2}
+      bind:value={test2}
       placeholder="Your password"
-      showValidFeedback="false"
       {validator} />
     <button disabled={!buttonValid}>LogIn</button>
   </FieldGroup>
@@ -94,7 +92,7 @@ validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-contr
 
 ## Custom Feedback messages
 
-```javascript
+```html
 <script>
     let msgs = {
     required: {
@@ -114,9 +112,9 @@ validators={['required', 'min:5', 'max:15']} bind:value={name} Class="form-contr
 You can choose if the valid or invalid feedback it's showed.
 
 ```html
-<ValidatedField Class="form-control" Type="text" id="login" value="teste"
-readonly validators={['required']} bind:value={teste} placeholder="teste"
-showValidFeedback="false" showInvalidFeedback="false" />
+<ValidatedField Class="form-control" Type="text" id="login" value="test"
+readonly validators={['required']} bind:value={test} placeholder="tes
+showInvalidFeedback="false" />
 ```
 
 ## Events
@@ -124,13 +122,13 @@ showValidFeedback="false" showInvalidFeedback="false" />
 #### DataField events
 
 ```html
-on:changeValidated on:validated on:invalidated
+on:changeValidation on:valid on:invalid
 ```
 
 #### FieldGroup events
 
 ```html
-on:changeValidated on:validated on:invalidated
+on:changeValidation on:valid on:invalid
 ```
 
 ### Example
@@ -148,10 +146,8 @@ on:changeValidated on:validated on:invalidated
   }
 </script>
 <ValidatedField Class="form-control" Type="text" id="login"
-validators={['required', 'strong-password']} bind:value={teste}
-placeholder="Your password" showValidFeedback="false"
-on:changeValidated={validate} on:validated={validated}
-on:invalidated={invalidate} />
+validators={['required', 'strong-password']} bind:value={test} placeholder="Your
+passwo on:changeValid={validate} on:valid={validated} on:invalid={invalidate} />
 ```
 
 ## Validators
@@ -175,7 +171,7 @@ on:invalidated={invalidate} />
 [ X ] Add new types of validations <br>
 [ X ] Add a event when the field is validated <br>
 [ X ] Add support to group validation check <br>
-[&nbsp;&nbsp;&nbsp;] Add support to all html events <br>
+[ X ] Add support to all html events <br>
 [&nbsp;&nbsp;&nbsp;] Check for errors <br>
 [&nbsp;&nbsp;&nbsp;] Improve the code <br>
 [&nbsp;&nbsp;&nbsp;] Add new features

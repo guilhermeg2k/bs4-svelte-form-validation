@@ -39,16 +39,16 @@
     validation.error ? (validated = false) : (validated = true);
     msg = validation.msg;
     if (validated != lastValidated) {
-      dispatch("changeValidated", {
+      dispatch("changeValidation", {
         text: msg
       });
       if (validated === true) {
-        dispatch("validated", {
+        dispatch("valid", {
           text: msg
         });
       }
-      if (validated === false) {
-        dispatch("invalidated", {
+      if (!validated) {
+        dispatch("invalid", {
           text: msg
         });
       }
@@ -75,7 +75,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -101,7 +121,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -124,7 +164,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -149,7 +209,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -168,7 +248,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -184,7 +284,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated}>
     <slot />
   </select>
@@ -209,7 +329,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -232,7 +372,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -254,7 +414,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -277,7 +457,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -301,7 +501,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -324,7 +544,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -346,7 +586,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -369,7 +629,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -392,7 +672,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -414,7 +714,27 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
@@ -436,27 +756,33 @@
     bind:value
     on:change
     on:click
-    class:is-invalid={validated === false}
+    on:blclick
+    on:mousedown
+    on:mousemove
+    on:mouseout
+    on:mouseover
+    on:mouseup
+    on:onwheel
+    on:drag
+    on:dragend
+    on:dragenter
+    on:dragleave
+    on:dragover
+    on:dragstart
+    on:drop
+    on:scroll
+    on:copy
+    on:cut
+    on:paste
+    on:abort
+    on:toggle
+    class:is-invalid={!validated}
     class:is-valid={validated} />
 {/if}
 
-{#if Type === 'button'}
-  <button
-    {Class}
-    {placeholder}
-    {name}
-    {id}
-    {size}
-    {required}
-    {disabled}
-    on:click>
-    <slot />
-  </button>
-{/if}
 {#if !validated && showInvalidFeedback === 'true'}
   <div class="invalid-feedback">{msg}</div>
 {/if}
 {#if validated && showValidFeedback === 'true'}
   <div class="valid-feedback">{msg}</div>
 {/if}
-

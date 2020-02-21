@@ -4,7 +4,6 @@
   export let Class = null;
   export let name = null;
   export let validator = null;
-  let elements;
   let elementsIds = [];
   let groupValidated = false;
   let lastGroupValidated = null;
@@ -13,16 +12,16 @@
     setTimeout(() => {
       groupValidated = validator.isValidated(elementsIds);
       if (groupValidated != lastGroupValidated) {
-        dispatch("changeValidated", {
+        dispatch("changeValidation", {
           text: "group change validated"
         });
         if (groupValidated === true) {
-          dispatch("validated", {
+          dispatch("valid", {
             text: "group validated"
           });
         }
         if (groupValidated === false) {
-          dispatch("invalidated", {
+          dispatch("invalid", {
             text: "group invalidated"
           });
         }
@@ -30,17 +29,27 @@
     }, 1);
   }
   onMount(() => {
-    elements = document.getElementById(id).querySelectorAll("input");
-    let selects = document.getElementById(id).querySelectorAll("select")[0];
+    let elements = document
+      .getElementById(id)
+      .querySelectorAll("input.is-invalid");
+    let selects = document
+      .getElementById(id)
+      .querySelectorAll("select.is-invalid")[0];
+    let textareas = document
+      .getElementById(id)
+      .querySelectorAll("textarea.is-invalid")[0];
     if (selects != undefined) {
-      elements = [
-        ...elements,
-        document.getElementById(id).querySelectorAll("select")[0]
-      ];
+      elements = [...elements, selects];
     }
-    console.log(elements);
+    if (textareas != undefined) {
+      elements = [...elements, textareas];
+    }
     Array.from(elements).forEach(element => {
-      if (element.tagName === "INPUT" || element.tagName === "SELECT") {
+      if (
+        element.tagName === "INPUT" ||
+        element.tagName === "SELECT" ||
+        element.tagName === "TEXTAREA"
+      ) {
         elementsIds.push(element.id);
         element.addEventListener("input", validateGroup);
       }
@@ -51,4 +60,3 @@
 <div {id} {Class} {name}>
   <slot />
 </div>
-
